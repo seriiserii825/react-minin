@@ -8,27 +8,52 @@ class App extends React.Component {
 			{name: "Ford"},
 			{name: "Opel"},
 			{name: "Toyota"},
-		]
+		],
+		title: "React components"
 	}
 
-	changeTitle = (name, index) => {
-		console.log(name, index);
-		const car = this.state.cars[index];
-		car.name = name;
+	changeTitle = () => {
+		this.setState({
+			title: 'Title was changed!!!'
+		})
+	}
+	onChangeCarTitle = (carTitle, index) => {
 		const cars = [...this.state.cars];
-		cars[index] = car;
+		cars[index].name = carTitle;
+		this.setState({cars})
+	}
+
+	onResetCar = (e, index) => {
+		e.preventDefault();
+		const cars = [...this.state.cars];
+		cars[index].name = "Auto";
+		this.setState({cars});
+	}
+
+	onDeleteCar = (index) => {
+		const cars = [...this.state.cars];
+		cars.splice(index, 1);
 		this.setState({cars});
 	}
 
 	render() {
 		const cars = this.state.cars.map((item, index) => {
 			return (
-				<Car key={index} changeTitle={(e) => this.changeTitle(e.target.value, index)} name={item.name}/>
+				<Car
+					onResetCar={(e) => this.onResetCar(e, index)}
+					onChangeCarTitle={(e) => this.onChangeCarTitle(e.target.value, index)} key={index}
+					name={item.name}
+					onDeleteCar={this.onDeleteCar.bind(this, index)}
+				/>
 			)
 		});
 		return (
 			<div className="App">
-				{cars}
+				<h1>{this.state.title}</h1>
+				<div className="cars">
+					{cars}
+				</div>
+				<button onClick={this.changeTitle} className="button-change">Change title</button>
 			</div>
 		);
 	}

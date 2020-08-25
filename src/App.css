@@ -1,5 +1,15 @@
 .App {
+  padding-top: 240px;
   text-align: center;
+}
+.App h1 {
+  margin-bottom: 60px;
+}
+.App .button-change {
+  padding: 20px 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .App-logo {
