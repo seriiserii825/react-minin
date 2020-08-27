@@ -11,6 +11,7 @@ const AnswersList = (props) => {
 						answers={item.text}
 						id={item.id}
 						onAnswerClick={props.onAnswerClick}
+						classState={props.classState ? props.classState[item.id] : null}
 					/>
 				)
 			})}
