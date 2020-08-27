@@ -3,7 +3,10 @@ import "./answersItem.scss";
 
 const AnswersItem = (props) => {
 	return (
-		<div className="answers-item">{props.answers}</div>
+		<li
+			className="answers-item"
+			onClick={() => props.onAnswerClick(props.id)}
+		>{props.answers}</li>
 	);
 };
 

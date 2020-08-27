@@ -2,7 +2,6 @@ import React from 'react';
 import AnswersItem from "./answersItem/answersItem";
 
 const AnswersList = (props) => {
-	console.log(props);
 	return (
 		<ul className="answers-list">
 			{props.answers.map((item, index) => {
@@ -10,6 +9,8 @@ const AnswersList = (props) => {
 					<AnswersItem
 						key={index}
 						answers={item.text}
+						id={item.id}
+						onAnswerClick={props.onAnswerClick}
 					/>
 				)
 			})}
